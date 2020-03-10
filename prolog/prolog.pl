@@ -32,12 +32,21 @@ conc([], X, X).
 conc([A|B], C, [A|D]) :- conc(B, C, D).
 
 create_new_list(Item, [], [[Item]]) :- !.
-create_new_list(Item, [[Head|Tail1]|Tail2], Result) :- Head mod 2 =:= Item mod 2,
+
+create_new_list(Item, [[Head|Tail1]|Tail2], Result) :-
+    Head mod 2 =:= Item mod 2,
     conc([Item], [Head|Tail1], New),
     conc([New], Tail2, Result), !.
-create_new_list(Item, [[Head|Tail1]|Tail2], Result) :- Head mod 2 =\= Item mod 2,
+create_new_list(Item, [[Head|Tail1]|Tail2], Result) :-
+    Head mod 2 =\= Item mod 2,
     conc([[Head|Tail1]], Tail2, List),
     conc([[Item]], List, Result).
 
 paruns([], []) :- !.
 paruns([Head|Tail], Result) :- paruns(Tail, Return), create_new_list(Head, Return, Result).
+
+
+
+eval(Expr, Val):-
+    eval()
+
