@@ -45,8 +45,14 @@ create_new_list(Item, [[Head|Tail1]|Tail2], Result) :-
 paruns([], []) :- !.
 paruns([Head|Tail], Result) :- paruns(Tail, Return), create_new_list(Head, Return, Result).
 
+% Question 1.4: List Processing
 
+eval(add(A, B), C) :- C is A + B.
+eval(sub(A, B), C) :- C is A - B.
+eval(div(A, B), C) :- C is A / B.
+eval(mul(A, B), C) :- C is A * B.
 
 eval(Expr, Val):-
-    eval()
+    eval(Expr, Return),
+    eval(Return, Val).
 
